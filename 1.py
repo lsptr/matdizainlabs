@@ -1,9 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+from PIL.ImageOps import scale
 
 
-def draw_spiral(iterations=1000, scale=1.0, angle_step=0.01):
+def draw_spiral(iterations=1000, scale=1.0, angle_step=0.1):
     theta = np.linspace(0, iterations * angle_step, iterations)
     r = theta * scale
 
@@ -13,7 +14,7 @@ def draw_spiral(iterations=1000, scale=1.0, angle_step=0.01):
     return x, y
 
 
-def animate_spiral(scale=1.0, angle_step=0.01):
+def animate_spiral(scale=1.0, angle_step=0.1):
     fig, ax = plt.subplots(figsize=(8, 8))
     ax.set_aspect('equal')
 
@@ -27,5 +28,5 @@ def animate_spiral(scale=1.0, angle_step=0.01):
     ani = animation.FuncAnimation(fig, update, frames=1000, interval=1)
     plt.show()
 
-
-animate_spiral(scale=2.0, angle_step=0.02)
+scale = int(input("scale: "))
+animate_spiral(scale=scale, angle_step=0.5)
